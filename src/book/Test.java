@@ -16,6 +16,7 @@ public class Test {
 		PaperBook b3 = new PaperBook("4444","1984",1975,150); 
 
 		EBook b4 = new EBook("5364","the hunger games",2008,300); 
+		DemoBook b5= new DemoBook("1111","Oliver twist",1911,0); 
 		
 		
 		//test adding
@@ -48,7 +49,7 @@ public class Test {
 		//test buying b3 
 		 
 		 
-	v.addBook(b4);
+	/*v.addBook(b4);
 	  v.addBook(b3); 
 	  v.addBook(b3); 
 	   v.addBook(b3); 
@@ -64,7 +65,38 @@ public class Test {
 		System.out.print(price); 
 	
 
+	*/
 		
+		//-------------------------------------------//
+		
+		//try purchasing a demobook
+		
+	/*	v.addBook(b5);
+		double price=0; 
+		
+		try {
+			price = c.buy("1111", "Oliver twist", 1, "@esra", "yasmin");
+		} catch (NoOutBooks e) {
+			// TODO Auto-generated catch block
+			System.out.print(e.getMessage());  
+		}
+		
+		*/
+		
+		v.addBook(b2);
+		v.addBook(b2);
+		v.addBook(b2);
+	
+		double price=0; 
+
+		try {
+			price = c.buy("5555", "Peter pan", 5, "@esra", "yasmin");
+		} catch (NoOutBooks e) {
+			// TODO Auto-generated catch block
+			System.out.print(e.getMessage());  
+		}
+		
+		System.out.print(price); 
 
 	}
 

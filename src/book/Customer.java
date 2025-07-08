@@ -29,17 +29,25 @@ public class Customer {
 	    for (int i = 0; i < v.getBooks().size(); i++) {
 	        Book b = v.getBooks().get(i);
 
+	        if (b instanceof DemoBook) {
+	            throw new NoOutBooks("This is a demo book, cannot purchase it");
+	        }
+
 	        if (b.getIsbn().equals(isbn)) {
-	          
 	            if (v.getInv().containsKey(b)) {
 	                int currentQuan = v.getInv().get(b);
-	                int newQuan = currentQuan - quantity;
+	                int purchasable = Math.min(currentQuan, quantity);
 
+	                
+	                price = purchasable * b.getPrice();
+
+	                
+	                int newQuan = currentQuan - purchasable;
 	                if (newQuan > 0) {
 	                    v.getInv().put(b, newQuan);
 	                } else {
 	                    v.getInv().remove(b);
-	                    v.getBooks().remove(b); 
+	                    v.getBooks().remove(b);
 	                }
 
 	                
@@ -51,14 +59,11 @@ public class Customer {
 	                    m.setEmail(email);
 	                }
 
-	                
-	                price = b.getPrice() * quantity;
 	                return price;
 	            }
 	        }
 	    }
 
-	 
 	    throw new NoOutBooks("No book available");
 	}
 
